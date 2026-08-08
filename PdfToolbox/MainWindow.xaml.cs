@@ -21,7 +21,7 @@ public partial class MainWindow : Window
     private void OpenButton_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new OpenFileDialog { Filter = "PDF files (*.pdf)|*.pdf" };
-        if (dialog.ShowDialog() == true)
+        if (dialog.ShowDialog() == true && !string.IsNullOrWhiteSpace(dialog.FileName))
         {
             OpenFile(dialog.FileName);
         }
@@ -64,9 +64,15 @@ public partial class MainWindow : Window
         var dialog = new SaveFileDialog { Filter = "PDF files (*.pdf)|*.pdf", FileName = _workspace.FileName };
         if (dialog.ShowDialog() == true)
         {
+            var outputPath = dialog.FileName;
+            if (string.IsNullOrWhiteSpace(outputPath))
+            {
+                return;
+            }
+
             try
             {
-                _workspace.SaveAs(dialog.FileName);
+                _workspace.SaveAs(outputPath);
             }
             catch (Exception ex)
             {

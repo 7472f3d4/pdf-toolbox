@@ -27,7 +27,9 @@ PDFに対する5つの基本操作(回転・中央で切る・分割・結合・
 ## 動作環境
 
 - Windows 10 / 11 (win-x64)
-- self-contained形式でビルドされた単一の実行ファイル(exe)のため、.NET Runtimeを別途インストールする必要はありません。
+- Microsoft .NET 10 Desktop Runtime (x64) が別途必要です。
+- .NET 10 Desktop Runtimeは、[公式ダウンロードページ](https://dotnet.microsoft.com/download/dotnet/10.0)から「Windows Desktop Runtime」のx64版をインストールしてください。
+- 配布用EXEには.NET Runtimeを同梱しません。Runtimeが見つからない場合は、.NETの実行環境からインストールを要求されます。
 
 ## ビルド方法
 
@@ -35,13 +37,13 @@ PDFに対する5つの基本操作(回転・中央で切る・分割・結合・
 dotnet build
 ```
 
-## Publish方法(配布用の単一exeを作成)
+## Publish方法(ランタイム別途要求の単一exeを作成)
 
 ```
-dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -o publish
+dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o publish
 ```
 
-`publish` フォルダに `PdfToolbox.exe` が生成されます。
+`publish` フォルダに、.NET 10 Desktop Runtimeを含まない `PdfToolbox.exe` が生成されます。実行するPCには、あらかじめ.NET 10 Desktop Runtime (x64)をインストールしてください。
 
 ## 既知の制約
 
