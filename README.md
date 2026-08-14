@@ -53,6 +53,8 @@ dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile
 pwsh -NoLogo -NoProfile -NonInteractive -File .\Build-PdfToolbox.ps1
 ```
 
+公開用ビルドでは、コード署名証明書を使って配布EXEとインストーラーへ署名します。
+
 インストーラーは「インストールされているアプリ」に登録され、そこからアンインストールできます。インストール前に .NET 10 Desktop Runtime (x64) の存在を確認し、Runtimeは同梱しません。
 
 ## 既知の制約
