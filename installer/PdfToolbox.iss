@@ -1,6 +1,6 @@
 #define MyAppName "PdfToolbox"
-#define MyAppVersion "1.0.0"
-#define MyAppPublisher "7472f3d4"
+#define MyAppVersion "1.0.1"
+#define MyAppPublisher "Mirin"
 #define MyAppExeName "PdfToolbox.exe"
 
 [Setup]
@@ -9,7 +9,7 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-AppCopyright=Copyright (C) 2026 7472f3d4
+AppCopyright=Copyright (C) 2026 Mirin
 DefaultDirName={localappdata}\Programs\PdfToolbox
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
@@ -22,7 +22,7 @@ RestartApplications=no
 SetupIconFile=..\PdfToolbox\Assets\PdfToolboxIcon.ico
 UninstallDisplayIcon={app}\{#MyAppExeName}
 OutputDir=..\artifacts
-OutputBaseFilename=PdfToolbox-1.0.0-win-x64-Setup
+OutputBaseFilename=PdfToolbox-1.0.1-win-x64-Setup
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
@@ -41,8 +41,15 @@ Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
 [Files]
 Source: "..\artifacts\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
+[InstallDelete]
+Type: files; Name: "{app}\*.pdb"
+
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; Comment: "Offline PDF tools"
+
+[UninstallDelete]
+Type: filesandordirs; Name: "{userappdata}\PdfToolbox"
+Type: filesandordirs; Name: "{localappdata}\PdfToolbox"
 
 ; No Startup-folder entry and no Run registry value are intentionally created.
 

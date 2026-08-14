@@ -50,7 +50,7 @@ dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile
 `Build-PdfToolbox.ps1` は `win-x64` の framework-dependent publish を作成し、Inno Setupで管理者権限を要求しないユーザー単位インストーラーを生成します。インストール先は `%LOCALAPPDATA%\Programs\PdfToolbox`、スタートメニューには通常起動用ショートカットだけを作成します。ログイン時の自動起動は登録しません。
 
 ```
-powershell -NoProfile -ExecutionPolicy Bypass -File .\Build-PdfToolbox.ps1
+pwsh -NoLogo -NoProfile -NonInteractive -File .\Build-PdfToolbox.ps1
 ```
 
 インストーラーは「インストールされているアプリ」に登録され、そこからアンインストールできます。インストール前に .NET 10 Desktop Runtime (x64) の存在を確認し、Runtimeは同梱しません。
